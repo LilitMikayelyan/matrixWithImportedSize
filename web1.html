@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head id="head">
+
+</head>
+
+<body id="body">
+    <input type="text" id="btton">
+    <input type="button" onclick="btn()" value="click">
+    <p id="url"></p>
+    <script>
+        function btn() {
+            var sizw = document.getElementById("btton").value;
+            var url = "http://localhost:3000/" + size;
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", url, false);
+            xmlHttp.send(null);
+            var elements = xmlHttp.responseText;
+            var arr = elements.split(",");
+            var tbl = document.createElement("table");
+            var n = parseInt(arr[0]);
+            var m = parseInt(arr[1]);
+            var k = 2;
+            for (let i = 0; i < n; i++) {
+                var tr = document.createElement("tr")
+                tbl.appendChild(tr);
+                for (let j = 0; j < m; j++) {
+                    var a = parseInt(arr[k]);
+                    if (a == 1 || a == 2 || a == 3) {
+                        var td = document.createElement("td");
+                        td.setAttribute("style", "background-color: grey;");
+                        td.setAttribute("border", "1px solid black");
+                        td.setAttribute("width", "40px");
+                        td.setAttribute("height", "40px");
+                        tr.appendChild(td);
+                    }
+                    else if (a == 4 || a == 5 || a == 6) {
+                        var td = document.createElement("td");
+                        td.setAttribute("style", "background-color: brown;");
+                        td.setAttribute("border", "1px solid black");
+                        td.setAttribute("width", "40px");
+                        td.setAttribute("height", "40px");
+                        tr.appendChild(td);
+                    }
+                    else {
+                        var td = document.createElement("td");
+                        td.setAttribute("style", "background-color: blue;");
+                        td.setAttribute("border", "1px solid black");
+                        td.setAttribute("width", "40px");
+                        td.setAttribute("height", "40px");
+                        tr.appendChild(td);
+                    }
+                    k++;
+                }
+            }
+
+            var elem = document.getElementById("body");
+            elem.appendChild(tbl);
+        }
+    </script>
+</body>
+
+</html>
